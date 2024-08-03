@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-public class Qualification {
+public class QualificationEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,15 +21,15 @@ public class Qualification {
 
     @ManyToOne
     @JoinColumn(name="empID")
-    private Employee employee;
+    private EmployeeEntity employeeEntity;
     // Getters and Setters
 
-    public Employee getEmployee() {
-        return employee;
+    public EmployeeEntity getEmployee() {
+        return employeeEntity;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setEmployee(EmployeeEntity employeeEntity) {
+        this.employeeEntity = employeeEntity;
     }
 
     public int getQualID() {

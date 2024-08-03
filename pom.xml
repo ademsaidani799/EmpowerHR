@@ -12,7 +12,7 @@
 	<artifactId>EmpowerHR</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>EmpowerHR</name>
-	<description>an employee management system</description>
+	<description>an employeeEntity management system</description>
 	<url/>
 	<licenses>
 		<license/>

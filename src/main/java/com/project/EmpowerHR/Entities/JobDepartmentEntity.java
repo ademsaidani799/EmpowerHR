@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-public class JobDepartment {
+public class JobDepartmentEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,29 +18,29 @@ public class JobDepartment {
 
     private String description;
 
-    public List<Salary> getSalaryList() {
-        return salaryList;
+    public List<SalaryEntity> getSalaryList() {
+        return salaryEntityList;
     }
 
-    public void setSalaryList(List<Salary> salaryList) {
-        this.salaryList = salaryList;
+    public void setSalaryList(List<SalaryEntity> salaryEntityList) {
+        this.salaryEntityList = salaryEntityList;
     }
 
-    public List<Payroll> getPayrollList() {
-        return payrollList;
+    public List<PayrollEntity> getPayrollList() {
+        return payrollEntityList;
     }
 
-    public void setPayrollList(List<Payroll> payrollList) {
-        this.payrollList = payrollList;
+    public void setPayrollList(List<PayrollEntity> payrollEntityList) {
+        this.payrollEntityList = payrollEntityList;
     }
 
     private String salaryRange;
 
     @OneToMany(mappedBy = "salary")
-    private List<Salary> salaryList;
+    private List<SalaryEntity> salaryEntityList;
 
     @OneToMany(mappedBy = "payroll")
-    private List<Payroll> payrollList;
+    private List<PayrollEntity> payrollEntityList;
     // Getters and Setters
 
     public int getJobID() {

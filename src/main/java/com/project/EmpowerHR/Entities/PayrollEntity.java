@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-public class Payroll {
+public class PayrollEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,50 +27,50 @@ public class Payroll {
 
     @ManyToOne
     @JoinColumn(name="jobID")
-    private JobDepartment jobDepartment;
+    private JobDepartmentEntity jobDepartment;
 
-    public JobDepartment getJobDepartment() {
+    public JobDepartmentEntity getJobDepartment() {
         return jobDepartment;
     }
 
-    public void setJobDepartment(JobDepartment jobDepartment) {
+    public void setJobDepartment(JobDepartmentEntity jobDepartment) {
         this.jobDepartment = jobDepartment;
     }
 
     @ManyToOne
     @JoinColumn(name="empID")
-    private Employee employee;
+    private EmployeeEntity employeeEntity;
 
     @ManyToOne
     @JoinColumn(name="salaryID")
-    private Salary salary;
+    private SalaryEntity salaryEntity;
 
     @ManyToOne
     @JoinColumn(name="leaveId")
-    private Leave leave;
+    private LeaveEnitiy leave;
 
-    public Leave getLeave() {
+    public LeaveEnitiy getLeave() {
         return leave;
     }
 
-    public void setLeave(Leave leave) {
+    public void setLeave(LeaveEnitiy leave) {
         this.leave = leave;
     }
 
-    public Employee getEmployee() {
-        return employee;
+    public EmployeeEntity getEmployee() {
+        return employeeEntity;
     }
 
-    public Salary getSalary() {
-        return salary;
+    public SalaryEntity getSalary() {
+        return salaryEntity;
     }
 
-    public void setSalary(Salary salary) {
-        this.salary = salary;
+    public void setSalary(SalaryEntity salaryEntity) {
+        this.salaryEntity = salaryEntity;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setEmployee(EmployeeEntity employeeEntity) {
+        this.employeeEntity = employeeEntity;
     }
 // Getters and Setters
 

@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-public class Employee {
+public class EmployeeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,36 +25,36 @@ public class Employee {
     private String password;
 
     @OneToMany(mappedBy = "qualification")
-    private List<Qualification> qualificationList;
+    private List<QualificationEntity> qualificationList;
     // Getters and Setters
 
     @OneToMany(mappedBy = "payroll")
-    private List<Payroll> payrolls;
+    private List<PayrollEntity> payrollEntities;
 
     @OneToMany(mappedBy = "leave")
-    private List<Leave> leaves;
+    private List<LeaveEnitiy> leaves;
 
-    public List<Qualification> getQualificationList() {
+    public List<QualificationEntity> getQualificationList() {
         return qualificationList;
     }
 
-    public void setQualificationList(List<Qualification> qualificationList) {
+    public void setQualificationList(List<QualificationEntity> qualificationList) {
         this.qualificationList = qualificationList;
     }
 
-    public List<Payroll> getPayrolls() {
-        return payrolls;
+    public List<PayrollEntity> getPayrolls() {
+        return payrollEntities;
     }
 
-    public void setPayrolls(List<Payroll> payrolls) {
-        this.payrolls = payrolls;
+    public void setPayrolls(List<PayrollEntity> payrollEntities) {
+        this.payrollEntities = payrollEntities;
     }
 
-    public List<Leave> getLeaves() {
+    public List<LeaveEnitiy> getLeaves() {
         return leaves;
     }
 
-    public void setLeaves(List<Leave> leaves) {
+    public void setLeaves(List<LeaveEnitiy> leaves) {
         this.leaves = leaves;
     }
 

@@ -7,7 +7,7 @@ import java.util.List;
 
 
 @Entity
-public class Leave {
+public class LeaveEnitiy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int leaveId;
@@ -17,17 +17,17 @@ public class Leave {
     private String reason;
     @ManyToOne
     @JoinColumn(name="empID")
-    private Employee employee;
+    private EmployeeEntity employeeEntity;
 
     @OneToMany(mappedBy = "payroll")
-    private List<Payroll> payrollList;
+    private List<PayrollEntity> payrollEntityList;
 
-    public List<Payroll> getPayrollList() {
-        return payrollList;
+    public List<PayrollEntity> getPayrollList() {
+        return payrollEntityList;
     }
 
-    public void setPayrollList(List<Payroll> payrollList) {
-        this.payrollList = payrollList;
+    public void setPayrollList(List<PayrollEntity> payrollEntityList) {
+        this.payrollEntityList = payrollEntityList;
     }
 
     public int getLeaveId() {
@@ -54,12 +54,12 @@ public class Leave {
         this.reason = reason;
     }
 
-    public Employee getEmployee() {
-        return employee;
+    public EmployeeEntity getEmployee() {
+        return employeeEntity;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setEmployee(EmployeeEntity employeeEntity) {
+        this.employeeEntity = employeeEntity;
     }
 
 

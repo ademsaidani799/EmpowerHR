@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-public class Salary {
+public class SalaryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,20 +22,20 @@ public class Salary {
 
     @ManyToOne
     @JoinColumn(name="jobID")
-    private JobDepartment jobDepartment;
+    private JobDepartmentEntity jobDepartment;
 
 
 
     @OneToMany(mappedBy = "payroll")
-    private List<Payroll> payrollList;
+    private List<PayrollEntity> payrollEntityList;
 // Getters and Setters
 
-    public List<Payroll> getPayrollList() {
-        return payrollList;
+    public List<PayrollEntity> getPayrollList() {
+        return payrollEntityList;
     }
 
-    public void setPayrollList(List<Payroll> payrollList) {
-        this.payrollList = payrollList;
+    public void setPayrollList(List<PayrollEntity> payrollEntityList) {
+        this.payrollEntityList = payrollEntityList;
     }
 
     public int getSalaryID() {
@@ -77,11 +77,11 @@ public class Salary {
     public void setBonus(double bonus) {
         this.bonus = bonus;
     }
-    public JobDepartment getJobDepartment() {
+    public JobDepartmentEntity getJobDepartment() {
         return jobDepartment;
     }
 
-    public void setJobDepartment(JobDepartment jobDepartment) {
+    public void setJobDepartment(JobDepartmentEntity jobDepartment) {
         this.jobDepartment = jobDepartment;
     }
 }
