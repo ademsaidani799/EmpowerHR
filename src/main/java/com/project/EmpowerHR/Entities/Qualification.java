@@ -19,7 +19,18 @@ public class Qualification {
     @Temporal(TemporalType.DATE)
     private Date dateIn;
 
+    @ManyToOne
+    @JoinColumn(name="empID")
+    private Employee employee;
     // Getters and Setters
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
 
     public int getQualID() {
         return qualID;

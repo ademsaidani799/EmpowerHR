@@ -25,7 +25,54 @@ public class Payroll {
 
     private double totalAmount;
 
-    // Getters and Setters
+    @ManyToOne
+    @JoinColumn(name="jobID")
+    private JobDepartment jobDepartment;
+
+    public JobDepartment getJobDepartment() {
+        return jobDepartment;
+    }
+
+    public void setJobDepartment(JobDepartment jobDepartment) {
+        this.jobDepartment = jobDepartment;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="empID")
+    private Employee employee;
+
+    @ManyToOne
+    @JoinColumn(name="salaryID")
+    private Salary salary;
+
+    @ManyToOne
+    @JoinColumn(name="leaveId")
+    private Leave leave;
+
+    public Leave getLeave() {
+        return leave;
+    }
+
+    public void setLeave(Leave leave) {
+        this.leave = leave;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public Salary getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Salary salary) {
+        this.salary = salary;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+// Getters and Setters
 
     public int getPayrollID() {
         return payrollID;

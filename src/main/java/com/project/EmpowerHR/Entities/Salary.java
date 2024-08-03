@@ -1,10 +1,9 @@
 package com.project.EmpowerHR.Entities;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Salary {
@@ -21,7 +20,23 @@ public class Salary {
 
     private double bonus;
 
-    // Getters and Setters
+    @ManyToOne
+    @JoinColumn(name="jobID")
+    private JobDepartment jobDepartment;
+
+
+
+    @OneToMany(mappedBy = "payroll")
+    private List<Payroll> payrollList;
+// Getters and Setters
+
+    public List<Payroll> getPayrollList() {
+        return payrollList;
+    }
+
+    public void setPayrollList(List<Payroll> payrollList) {
+        this.payrollList = payrollList;
+    }
 
     public int getSalaryID() {
         return salaryID;
@@ -61,5 +76,12 @@ public class Salary {
 
     public void setBonus(double bonus) {
         this.bonus = bonus;
+    }
+    public JobDepartment getJobDepartment() {
+        return jobDepartment;
+    }
+
+    public void setJobDepartment(JobDepartment jobDepartment) {
+        this.jobDepartment = jobDepartment;
     }
 }

@@ -1,8 +1,8 @@
 package com.project.EmpowerHR.Entities;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
+
 @Entity
 public class Employee {
 
@@ -24,7 +24,39 @@ public class Employee {
 
     private String password;
 
+    @OneToMany(mappedBy = "qualification")
+    private List<Qualification> qualificationList;
     // Getters and Setters
+
+    @OneToMany(mappedBy = "payroll")
+    private List<Payroll> payrolls;
+
+    @OneToMany(mappedBy = "leave")
+    private List<Leave> leaves;
+
+    public List<Qualification> getQualificationList() {
+        return qualificationList;
+    }
+
+    public void setQualificationList(List<Qualification> qualificationList) {
+        this.qualificationList = qualificationList;
+    }
+
+    public List<Payroll> getPayrolls() {
+        return payrolls;
+    }
+
+    public void setPayrolls(List<Payroll> payrolls) {
+        this.payrolls = payrolls;
+    }
+
+    public List<Leave> getLeaves() {
+        return leaves;
+    }
+
+    public void setLeaves(List<Leave> leaves) {
+        this.leaves = leaves;
+    }
 
     public int getEmpID() {
         return empID;

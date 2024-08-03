@@ -1,10 +1,9 @@
 package com.project.EmpowerHR.Entities;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class JobDepartment {
@@ -19,8 +18,29 @@ public class JobDepartment {
 
     private String description;
 
+    public List<Salary> getSalaryList() {
+        return salaryList;
+    }
+
+    public void setSalaryList(List<Salary> salaryList) {
+        this.salaryList = salaryList;
+    }
+
+    public List<Payroll> getPayrollList() {
+        return payrollList;
+    }
+
+    public void setPayrollList(List<Payroll> payrollList) {
+        this.payrollList = payrollList;
+    }
+
     private String salaryRange;
 
+    @OneToMany(mappedBy = "salary")
+    private List<Salary> salaryList;
+
+    @OneToMany(mappedBy = "payroll")
+    private List<Payroll> payrollList;
     // Getters and Setters
 
     public int getJobID() {
