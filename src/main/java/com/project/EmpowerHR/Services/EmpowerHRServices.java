@@ -54,35 +54,6 @@ public class EmpowerHRServices implements EmpowerHR {
         employeeEntity.setEmail(employee.getEmail());
         employeeEntity.setPassword(employee.getPassword());
 
-        // Handle QualificationEntities
-        if (employee.getQualificationList() != null) {
-            for (Qualification qualification : employee.getQualificationList()) {
-                QualificationEntity qualificationEntity = new QualificationEntity();
-                qualificationEntity.setPosition(qualification.getPosition());
-                qualificationEntity.setRequirements(qualification.getRequirements());
-                qualificationEntity.setDateIn(qualification.getDateIn());
-                qualificationEntity.setEmployee(employeeEntity);
-                qualificationRepository.save(qualificationEntity);
-                employeeEntity.getQualificationList().add(qualificationEntity);
-            }
-        }
-
-        // Handle PayrollEntities
-        if (employee.getPayrollEntities() != null) {
-            for (Payroll payroll : employee.getPayrollEntities()) {
-                PayrollEntity payrollEntity = new PayrollEntity();
-                payrollEntity.setJobID(payroll.getJobID());
-                payrollEntity.setSalaryID(payroll.getSalaryID());
-                payrollEntity.setLeaveID(payroll.getLeaveID());
-                payrollEntity.setDate(payroll.getDate());
-                payrollEntity.setReport(payroll.getReport());
-                payrollEntity.setTotalAmount(payroll.getTotalAmount());
-                payrollEntity.setEmployee(employeeEntity);
-                payrollRepository.save(payrollEntity);
-                employeeEntity.getPayrolls().add(payrollEntity);
-            }
-        }
-
 
 
         return employeeRepository.save(employeeEntity);
@@ -117,49 +88,6 @@ public class EmpowerHRServices implements EmpowerHR {
             employeeEntity.setEmail(employee.getEmail());
             employeeEntity.setPassword(employee.getPassword());
 
-            // Clear existing qualifications and add new ones
-            employeeEntity.getQualificationList().clear();
-            if (employee.getQualificationList() != null) {
-                for (Qualification qualification : employee.getQualificationList()) {
-                    QualificationEntity qualificationEntity = new QualificationEntity();
-                    qualificationEntity.setPosition(qualification.getPosition());
-                    qualificationEntity.setRequirements(qualification.getRequirements());
-                    qualificationEntity.setDateIn(qualification.getDateIn());
-                    qualificationEntity.setEmployee(employeeEntity);
-                    qualificationRepository.save(qualificationEntity);
-                    employeeEntity.getQualificationList().add(qualificationEntity);
-                }
-            }
-
-            // Clear existing payrolls and add new ones
-            employeeEntity.getPayrolls().clear();
-            if (employee.getPayrollEntities() != null) {
-                for (Payroll payroll : employee.getPayrollEntities()) {
-                    PayrollEntity payrollEntity = new PayrollEntity();
-                    payrollEntity.setJobID(payroll.getJobID());
-                    payrollEntity.setSalaryID(payroll.getSalaryID());
-                    payrollEntity.setLeaveID(payroll.getLeaveID());
-                    payrollEntity.setDate(payroll.getDate());
-                    payrollEntity.setReport(payroll.getReport());
-                    payrollEntity.setTotalAmount(payroll.getTotalAmount());
-                    payrollEntity.setEmployee(employeeEntity);
-                    payrollRepository.save(payrollEntity);
-                    employeeEntity.getPayrolls().add(payrollEntity);
-                }
-            }
-
-            // Clear existing leaves and add new ones
-            employeeEntity.getLeaves().clear();
-            if (employee.getLeaves() != null) {
-                for (Leave leave : employee.getLeaves()) {
-                    LeaveEntity leaveEntity = new LeaveEntity();
-                    leaveEntity.setDate(leave.getDate());
-                    leaveEntity.setReason(leave.getReason());
-                    leaveEntity.setEmployee(employeeEntity);
-                    leaveRepository.save(leaveEntity);
-                    employeeEntity.getLeaves().add(leaveEntity);
-                }
-            }
 
             return employeeRepository.save(employeeEntity);
         } else {
@@ -172,6 +100,7 @@ public class EmpowerHRServices implements EmpowerHR {
         employeeRepository.deleteById(Math.toIntExact(id));
     }
     @Transactional
+    @Override
     public JobDepartmentEntity createJobDepartment(JobDepartment jobDepartment) {
         JobDepartmentEntity jobDepartmentEntity = new JobDepartmentEntity();
         jobDepartmentEntity.setJobDept(jobDepartment.getJobDept());
@@ -179,53 +108,15 @@ public class EmpowerHRServices implements EmpowerHR {
         jobDepartmentEntity.setDescription(jobDepartment.getDescription());
         jobDepartmentEntity.setSalaryRange(jobDepartment.getSalaryRange());
 
-        // Initialize the lists if they are null
-        if (jobDepartmentEntity.getSalaryEntityList() == null) {
-            jobDepartmentEntity.setSalaryEntityList(new ArrayList<>());
-        }
-        if (jobDepartmentEntity.getPayrollEntityList() == null) {
-            jobDepartmentEntity.setPayrollEntityList(new ArrayList<>());
-        }
-
-        // Handle SalaryEntities
-        if (jobDepartment.getSalaryList() != null) {
-            for (Salary salary : jobDepartment.getSalaryList()) {
-                SalaryEntity salaryEntity = new SalaryEntity();
-                salaryEntity.setJobID(salary.getJobID());
-                salaryEntity.setAmount(salary.getAmount());
-                salaryEntity.setAnnual(salary.getAnnual());
-                salaryEntity.setBonus(salary.getBonus());
-                salaryEntity.setJobDepartment(jobDepartmentEntity);
-                salaryRepository.save(salaryEntity);
-                jobDepartmentEntity.getSalaryEntityList().add(salaryEntity);
-            }
-        }
-
-        // Handle PayrollEntities
-        if (jobDepartment.getPayrollList() != null) {
-            for (Payroll payroll : jobDepartment.getPayrollList()) {
-                PayrollEntity payrollEntity = new PayrollEntity();
-                payrollEntity.setEmpID(payroll.getEmpID());
-                payrollEntity.setJobID(payroll.getJobID());
-                payrollEntity.setSalaryID(payroll.getSalaryID());
-                payrollEntity.setLeaveID(payroll.getLeaveID());
-                payrollEntity.setDate(payroll.getDate());
-                payrollEntity.setReport(payroll.getReport());
-                payrollEntity.setTotalAmount(payroll.getTotalAmount());
-                payrollEntity.setJobDepartment(jobDepartmentEntity);
-                payrollRepository.save(payrollEntity);
-                jobDepartmentEntity.getPayrollEntityList().add(payrollEntity);
-            }
-        }
 
         return jobDepartmentRepository.save(jobDepartmentEntity);
     }
-
+@Override
     public JobDepartmentEntity getJobDepartmentById(Long id) {
         Optional<JobDepartmentEntity> optionalJobDepartmentEntity = jobDepartmentRepository.findById(Math.toIntExact(id));
         return optionalJobDepartmentEntity.orElse(null);
     }
-
+@Override
     public List<JobDepartmentEntity> getAllJobDepartments() {
         return jobDepartmentRepository.findAll();
     }
@@ -240,45 +131,12 @@ public class EmpowerHRServices implements EmpowerHR {
             jobDepartmentEntity.setDescription(jobDepartment.getDescription());
             jobDepartmentEntity.setSalaryRange(jobDepartment.getSalaryRange());
 
-            // Handle SalaryEntities
-            jobDepartmentEntity.getSalaryEntityList().clear();
-            if (jobDepartment.getSalaryList() != null) {
-                for (Salary salary : jobDepartment.getSalaryList()) {
-                    SalaryEntity salaryEntity = new SalaryEntity();
-                    salaryEntity.setJobID(salary.getJobID());
-                    salaryEntity.setAmount(salary.getAmount());
-                    salaryEntity.setAnnual(salary.getAnnual());
-                    salaryEntity.setBonus(salary.getBonus());
-                    salaryEntity.setJobDepartment(jobDepartmentEntity);
-                    salaryRepository.save(salaryEntity);
-                    jobDepartmentEntity.getSalaryEntityList().add(salaryEntity);
-                }
-            }
-
-            // Handle PayrollEntities
-            jobDepartmentEntity.getPayrollEntityList().clear();
-            if (jobDepartment.getPayrollList() != null) {
-                for (Payroll payroll : jobDepartment.getPayrollList()) {
-                    PayrollEntity payrollEntity = new PayrollEntity();
-                    payrollEntity.setEmpID(payroll.getEmpID());
-                    payrollEntity.setJobID(payroll.getJobID());
-                    payrollEntity.setSalaryID(payroll.getSalaryID());
-                    payrollEntity.setLeaveID(payroll.getLeaveID());
-                    payrollEntity.setDate(payroll.getDate());
-                    payrollEntity.setReport(payroll.getReport());
-                    payrollEntity.setTotalAmount(payroll.getTotalAmount());
-                    payrollEntity.setJobDepartment(jobDepartmentEntity);
-                    payrollRepository.save(payrollEntity);
-                    jobDepartmentEntity.getPayrollEntityList().add(payrollEntity);
-                }
-            }
-
             return jobDepartmentRepository.save(jobDepartmentEntity);
         } else {
             return null;
         }
     }
-
+@Override
     @Transactional
     public void deleteJobDepartment(Long id) {
         jobDepartmentRepository.deleteById(Math.toIntExact(id));
@@ -294,24 +152,8 @@ public class EmpowerHRServices implements EmpowerHR {
                 .orElseThrow(() -> new RuntimeException("Employee not found"));
         leaveEntity.setEmployee(employeeEntity);
 
-        leaveEntity.setPayrollEntityList(new ArrayList<>());
-        if (leave.getPayrollList() != null) {
-            for (Payroll payroll : leave.getPayrollList()) {
-                PayrollEntity payrollEntity = new PayrollEntity();
-                payrollEntity.setJobID(payroll.getJobID());
-                payrollEntity.setSalaryID(payroll.getSalaryID());
-                payrollEntity.setLeaveID(payroll.getLeaveID());
-                payrollEntity.setDate(payroll.getDate());
-                payrollEntity.setReport(payroll.getReport());
-                payrollEntity.setTotalAmount(payroll.getTotalAmount());
-                payrollEntity.setLeave(leaveEntity);
-                payrollRepository.save(payrollEntity);
-                leaveEntity.getPayrollEntityList().add(payrollEntity);
-            }
-        }
-        employeeEntity.getLeaves().add(leaveEntity);
-
-
+      employeeEntity.getLeaves().add(leaveEntity);
+      employeeRepository.save(employeeEntity);
         return leaveRepository.save(leaveEntity);
     }
 
@@ -333,24 +175,14 @@ public class EmpowerHRServices implements EmpowerHR {
         leaveEntity.setDate(leave.getDate());
         leaveEntity.setReason(leave.getReason());
 
-        // Update Payrolls
-        leaveEntity.getPayrollEntityList().clear();
-        if (leave.getPayrollList() != null) {
-            for (Payroll payroll : leave.getPayrollList()) {
-                PayrollEntity payrollEntity = new PayrollEntity();
-                payrollEntity.setJobID(payroll.getJobID());
-                payrollEntity.setSalaryID(payroll.getSalaryID());
-                payrollEntity.setLeaveID(payroll.getLeaveID());
-                payrollEntity.setDate(payroll.getDate());
-                payrollEntity.setReport(payroll.getReport());
-                payrollEntity.setTotalAmount(payroll.getTotalAmount());
-                payrollEntity.setLeave(leaveEntity);
-                payrollRepository.save(payrollEntity);
-                leaveEntity.getPayrollEntityList().add(payrollEntity);
-            }
-        }
+        EmployeeEntity employeeEntity = employeeRepository.findById(leave.getEmpID())
+                .orElseThrow(() -> new RuntimeException("Employee not found"));
+        leaveEntity.setEmployee(employeeEntity);
 
+        employeeEntity.getLeaves().add(leaveEntity);
+        employeeRepository.save(employeeEntity);
         return leaveRepository.save(leaveEntity);
+
     }
 
     @Override
@@ -358,6 +190,44 @@ public class EmpowerHRServices implements EmpowerHR {
         leaveRepository.deleteById(Math.toIntExact(id));
     }
 
+    public PayrollEntity createPayrollEntity(Payroll payroll){
+            PayrollEntity payrollEntity = new PayrollEntity();
+        payrollEntity.setDate(payroll.getDate());
+        payrollEntity.setReport(payroll.getReport());
+        payrollEntity.setTotalAmount(payroll.getTotalAmount());
+        JobDepartmentEntity jobDepartmentEntity = jobDepartmentRepository.findById(payroll.getJobID())
+                .orElseThrow(() -> new RuntimeException("Job Department not found"));
+        payrollEntity.setJobDepartment(jobDepartmentEntity);
+
+        jobDepartmentEntity.getPayrollEntityList().add(payrollEntity);
+        jobDepartmentRepository.save(jobDepartmentEntity);
+
+        SalaryEntity salaryEntity = salaryRepository.findById(payroll.getSalaryID())
+                .orElseThrow(() -> new RuntimeException("Job Department not found"));
+        payrollEntity.setSalaryEntity(salaryEntity);
+
+        salaryEntity.getPayrollList().add(payrollEntity);
+        salaryRepository.save(salaryEntity);
+
+
+        EmployeeEntity employeeEntity = employeeRepository.findById(payroll.getEmpID())
+                .orElseThrow(() -> new RuntimeException("Job Department not found"));
+        payrollEntity.setEmployeeEntity(employeeEntity);
+
+        employeeEntity.getPayrolls().add(payrollEntity);
+        employeeRepository.save(employeeEntity);
+
+        LeaveEntity leaveEntity = leaveRepository.findById(payroll.getLeaveID())
+                .orElseThrow(() -> new RuntimeException("Job Department not found"));
+        payrollEntity.setLeave(leaveEntity);
+
+        leaveEntity.getPayrollEntityList().add(payrollEntity);
+        leaveRepository.save(leaveEntity);
+
+
+
+        return payrollRepository.save(payrollEntity);
+    }
     @Override
     public PayrollEntity getPayrollById(Long id) {
         return payrollRepository.findById(Math.toIntExact(id)).orElseThrow(() -> new RuntimeException("Payroll not found"));
@@ -373,27 +243,41 @@ public class EmpowerHRServices implements EmpowerHR {
         PayrollEntity payrollEntity = payrollRepository.findById((int) payroll.getPayrollID())
                 .orElseThrow(() -> new RuntimeException("Payroll not found"));
 
-        payrollEntity.setEmpID(payroll.getEmpID());
-        payrollEntity.setJobID(payroll.getJobID());
-        payrollEntity.setSalaryID(payroll.getSalaryID());
-        payrollEntity.setLeaveID(payroll.getLeaveID());
+
         payrollEntity.setDate(payroll.getDate());
         payrollEntity.setReport(payroll.getReport());
         payrollEntity.setTotalAmount(payroll.getTotalAmount());
 
-        // Update relationships
-        if (payroll.getJobID() != 0) {
-            payrollEntity.setJobDepartment(jobDepartmentRepository.findById(payroll.getJobID()).orElse(null));
-        }
-        if (payroll.getEmpID() != 0) {
-            payrollEntity.setEmployee(employeeRepository.findById(payroll.getEmpID()).orElse(null));
-        }
-        if (payroll.getSalaryID() != 0) {
-            payrollEntity.setSalary(salaryRepository.findById(payroll.getSalaryID()).orElse(null));
-        }
-        if (payroll.getLeaveID() != 0) {
-            payrollEntity.setLeave(leaveRepository.findById(payroll.getLeaveID()).orElse(null));
-        }
+        JobDepartmentEntity jobDepartmentEntity = jobDepartmentRepository.findById(payroll.getJobID())
+                .orElseThrow(() -> new RuntimeException("Job Department not found"));
+        payrollEntity.setJobDepartment(jobDepartmentEntity);
+
+        jobDepartmentEntity.getPayrollEntityList().add(payrollEntity);
+        jobDepartmentRepository.save(jobDepartmentEntity);
+
+        SalaryEntity salaryEntity = salaryRepository.findById(payroll.getSalaryID())
+                .orElseThrow(() -> new RuntimeException("Job Department not found"));
+        payrollEntity.setSalaryEntity(salaryEntity);
+
+        salaryEntity.getPayrollList().add(payrollEntity);
+        salaryRepository.save(salaryEntity);
+
+
+        EmployeeEntity employeeEntity = employeeRepository.findById(payroll.getEmpID())
+                .orElseThrow(() -> new RuntimeException("Job Department not found"));
+        payrollEntity.setEmployeeEntity(employeeEntity);
+
+        employeeEntity.getPayrolls().add(payrollEntity);
+        employeeRepository.save(employeeEntity);
+
+        LeaveEntity leaveEntity = leaveRepository.findById(payroll.getLeaveID())
+                .orElseThrow(() -> new RuntimeException("Job Department not found"));
+        payrollEntity.setLeave(leaveEntity);
+
+        leaveEntity.getPayrollEntityList().add(payrollEntity);
+        leaveRepository.save(leaveEntity);
+
+
 
         return payrollRepository.save(payrollEntity);
     }
@@ -409,6 +293,20 @@ public class EmpowerHRServices implements EmpowerHR {
     }
 
 
+
+    public QualificationEntity createQualification(Qualification qualification){
+        QualificationEntity qualificationEntity = new QualificationEntity();
+        qualificationEntity.setPosition(qualification.getPosition());
+        qualificationEntity.setRequirements(qualification.getRequirements());
+        qualificationEntity.setDateIn(qualification.getDateIn());
+
+        EmployeeEntity employeeEntity = employeeRepository.findById((int) qualification.getEmpID())
+                .orElseThrow(() -> new RuntimeException("Employee not found"));
+        qualificationEntity.setEmployee(employeeEntity);
+ employeeEntity.getQualificationList().add(qualificationEntity);
+ employeeRepository.save(employeeEntity);
+        return qualificationRepository.save(qualificationEntity);
+    }
     @Override
     public List<QualificationEntity> getAllQualifications() {
         return qualificationRepository.findAll();
@@ -426,7 +324,8 @@ public class EmpowerHRServices implements EmpowerHR {
         EmployeeEntity employeeEntity = employeeRepository.findById((int) qualification.getEmpID())
                 .orElseThrow(() -> new RuntimeException("Employee not found"));
         qualificationEntity.setEmployee(employeeEntity);
-
+        employeeEntity.getQualificationList().add(qualificationEntity);
+        employeeRepository.save(employeeEntity);
         return qualificationRepository.save(qualificationEntity);
     }
 
@@ -481,7 +380,6 @@ public class EmpowerHRServices implements EmpowerHR {
     @Transactional
     public SalaryEntity createSalary(Salary salary) {
         SalaryEntity salaryEntity = new SalaryEntity();
-        salaryEntity.setJobID(salary.getJobID());
         salaryEntity.setAmount(salary.getAmount());
         salaryEntity.setAnnual(salary.getAnnual());
         salaryEntity.setBonus(salary.getBonus());
@@ -490,21 +388,8 @@ public class EmpowerHRServices implements EmpowerHR {
                 .orElseThrow(() -> new RuntimeException("Job Department not found"));
         salaryEntity.setJobDepartment(jobDepartmentEntity);
 
-        if (salary.getPayrollEntityList() != null) {
-            for (Payroll payroll : salary.getPayrollEntityList()) {
-                PayrollEntity payrollEntity = new PayrollEntity();
-                payrollEntity.setEmpID(payroll.getEmpID());
-                payrollEntity.setJobID(payroll.getJobID());
-                payrollEntity.setSalaryID(payroll.getSalaryID());
-                payrollEntity.setLeaveID(payroll.getLeaveID());
-                payrollEntity.setDate(payroll.getDate());
-                payrollEntity.setReport(payroll.getReport());
-                payrollEntity.setTotalAmount(payroll.getTotalAmount());
-                payrollEntity.setSalary(salaryEntity);
-                payrollRepository.save(payrollEntity);
-                salaryEntity.getPayrollList().add(payrollEntity);
-            }
-        }
+  jobDepartmentEntity.getSalaryEntityList().add(salaryEntity);
+  jobDepartmentRepository.save(jobDepartmentEntity);
 
         return salaryRepository.save(salaryEntity);
     }
@@ -524,7 +409,6 @@ public class EmpowerHRServices implements EmpowerHR {
     public SalaryEntity updateSalary(Salary salary) {
         SalaryEntity salaryEntity = salaryRepository.findById((int) salary.getSalaryID())
                 .orElseThrow(() -> new RuntimeException("Salary not found"));
-        salaryEntity.setJobID(salary.getJobID());
         salaryEntity.setAmount(salary.getAmount());
         salaryEntity.setAnnual(salary.getAnnual());
         salaryEntity.setBonus(salary.getBonus());
@@ -533,23 +417,8 @@ public class EmpowerHRServices implements EmpowerHR {
                 .orElseThrow(() -> new RuntimeException("Job Department not found"));
         salaryEntity.setJobDepartment(jobDepartmentEntity);
 
-        // Update Payrolls
-        salaryEntity.getPayrollList().clear();
-        if (salary.getPayrollEntityList() != null) {
-            for (Payroll payroll : salary.getPayrollEntityList()) {
-                PayrollEntity payrollEntity = new PayrollEntity();
-                payrollEntity.setEmpID(payroll.getEmpID());
-                payrollEntity.setJobID(payroll.getJobID());
-                payrollEntity.setSalaryID(payroll.getSalaryID());
-                payrollEntity.setLeaveID(payroll.getLeaveID());
-                payrollEntity.setDate(payroll.getDate());
-                payrollEntity.setReport(payroll.getReport());
-                payrollEntity.setTotalAmount(payroll.getTotalAmount());
-                payrollEntity.setSalary(salaryEntity);
-                payrollRepository.save(payrollEntity);
-                salaryEntity.getPayrollList().add(payrollEntity);
-            }
-        }
+        jobDepartmentEntity.getSalaryEntityList().add(salaryEntity);
+        jobDepartmentRepository.save(jobDepartmentEntity);
 
         return salaryRepository.save(salaryEntity);
     }

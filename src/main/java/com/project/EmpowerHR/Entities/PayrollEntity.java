@@ -10,13 +10,6 @@ public class PayrollEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int payrollID;
 
-    private int empID;
-
-    private int jobID;
-
-    private int salaryID;
-
-    private int leaveID;
 
     @Temporal(TemporalType.DATE)
     private Date date;
@@ -82,36 +75,20 @@ public class PayrollEntity {
         this.payrollID = payrollID;
     }
 
-    public int getEmpID() {
-        return empID;
+    public EmployeeEntity getEmployeeEntity() {
+        return employeeEntity;
     }
 
-    public void setEmpID(int empID) {
-        this.empID = empID;
+    public void setEmployeeEntity(EmployeeEntity employeeEntity) {
+        this.employeeEntity = employeeEntity;
     }
 
-    public int getJobID() {
-        return jobID;
+    public SalaryEntity getSalaryEntity() {
+        return salaryEntity;
     }
 
-    public void setJobID(int jobID) {
-        this.jobID = jobID;
-    }
-
-    public int getSalaryID() {
-        return salaryID;
-    }
-
-    public void setSalaryID(int salaryID) {
-        this.salaryID = salaryID;
-    }
-
-    public int getLeaveID() {
-        return leaveID;
-    }
-
-    public void setLeaveID(int leaveID) {
-        this.leaveID = leaveID;
+    public void setSalaryEntity(SalaryEntity salaryEntity) {
+        this.salaryEntity = salaryEntity;
     }
 
     public Date getDate() {
