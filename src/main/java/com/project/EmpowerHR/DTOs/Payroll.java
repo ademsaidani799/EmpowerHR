@@ -1,78 +1,19 @@
-package com.project.EmpowerHR.Entities;
-import jakarta.persistence.*;
+package com.project.EmpowerHR.DTOs;
 
 import java.util.Date;
 
-@Entity
-public class PayrollEntity {
+public class Payroll {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int payrollID;
-
     private int empID;
-
     private int jobID;
-
     private int salaryID;
-
     private int leaveID;
-
-    @Temporal(TemporalType.DATE)
     private Date date;
-
     private String report;
-
     private double totalAmount;
 
-    @ManyToOne
-    @JoinColumn(name="jobID")
-    private JobDepartmentEntity jobDepartment;
-
-    public JobDepartmentEntity getJobDepartment() {
-        return jobDepartment;
-    }
-
-    public void setJobDepartment(JobDepartmentEntity jobDepartment) {
-        this.jobDepartment = jobDepartment;
-    }
-
-    @ManyToOne
-    @JoinColumn(name="empID")
-    private EmployeeEntity employeeEntity;
-
-    @ManyToOne
-    @JoinColumn(name="salaryID")
-    private SalaryEntity salaryEntity;
-
-    @ManyToOne
-    @JoinColumn(name="leaveId")
-    private LeaveEntity leave;
-
-    public LeaveEntity getLeave() {
-        return leave;
-    }
-
-    public void setLeave(LeaveEntity leave) {
-        this.leave = leave;
-    }
-
-    public EmployeeEntity getEmployee() {
-        return employeeEntity;
-    }
-
-    public SalaryEntity getSalary() {
-        return salaryEntity;
-    }
-
-    public void setSalary(SalaryEntity salaryEntity) {
-        this.salaryEntity = salaryEntity;
-    }
-
-    public void setEmployee(EmployeeEntity employeeEntity) {
-        this.employeeEntity = employeeEntity;
-    }
-// Getters and Setters
+    // Getters and Setters
 
     public int getPayrollID() {
         return payrollID;

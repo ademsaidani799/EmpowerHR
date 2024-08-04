@@ -1,41 +1,25 @@
-package com.project.EmpowerHR.Entities;
+package com.project.EmpowerHR.DTOs;
 
+import com.project.EmpowerHR.Entities.PayrollEntity;
 
-import jakarta.persistence.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-public class SalaryEntity {
+public class Salary {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int salaryID;
-
     private int jobID;
-
     private int amount;
-
     private double annual;
-
     private double bonus;
+    private List<Payroll> payrollEntityList;
 
-    @ManyToOne
-    @JoinColumn(name="jobID")
-    private JobDepartmentEntity jobDepartment;
+    // Getters and Setters
 
-
-
-    @OneToMany(mappedBy = "payroll")
-    private List<PayrollEntity> payrollEntityList=new ArrayList<>();
-// Getters and Setters
-
-    public List<PayrollEntity> getPayrollList() {
+    public List<Payroll> getPayrollEntityList() {
         return payrollEntityList;
     }
 
-    public void setPayrollList(List<PayrollEntity> payrollEntityList) {
+    public void setPayrollEntityList(List<Payroll> payrollEntityList) {
         this.payrollEntityList = payrollEntityList;
     }
 
@@ -77,12 +61,4 @@ public class SalaryEntity {
 
     public void setBonus(double bonus) {
         this.bonus = bonus;
-    }
-    public JobDepartmentEntity getJobDepartment() {
-        return jobDepartment;
-    }
-
-    public void setJobDepartment(JobDepartmentEntity jobDepartment) {
-        this.jobDepartment = jobDepartment;
-    }
-}
+    }}

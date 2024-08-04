@@ -2,33 +2,28 @@ package com.project.EmpowerHR.Entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
 @Entity
-public class LeaveEnitiy {
+public class LeaveEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int leaveId;
 
     @Temporal(TemporalType.DATE)
-    private Date date  ;
+    private Date date;
     private String reason;
+
     @ManyToOne
-    @JoinColumn(name="empID")
+    @JoinColumn(name = "empID")
     private EmployeeEntity employeeEntity;
 
-    @OneToMany(mappedBy = "payroll")
-    private List<PayrollEntity> payrollEntityList;
+    @OneToMany(mappedBy = "leave", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PayrollEntity> payrollEntityList=new ArrayList<>();
 
-    public List<PayrollEntity> getPayrollList() {
-        return payrollEntityList;
-    }
-
-    public void setPayrollList(List<PayrollEntity> payrollEntityList) {
-        this.payrollEntityList = payrollEntityList;
-    }
+    // Getters and Setters
 
     public int getLeaveId() {
         return leaveId;
@@ -62,5 +57,11 @@ public class LeaveEnitiy {
         this.employeeEntity = employeeEntity;
     }
 
+    public List<PayrollEntity> getPayrollEntityList() {
+        return payrollEntityList;
+    }
 
+    public void setPayrollEntityList(List<PayrollEntity> payrollEntityList) {
+        this.payrollEntityList = payrollEntityList;
+    }
 }

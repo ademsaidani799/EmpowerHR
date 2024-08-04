@@ -1,62 +1,23 @@
-package com.project.EmpowerHR.Entities;
-import jakarta.persistence.*;
+package com.project.EmpowerHR.DTOs;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-public class EmployeeEntity {
+public class Employee {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int empID;
-
     private String firstName;
-
     private String lastName;
-
     private int gender;
-
     private int age;
-
     private int contactAddress;
-
     private String email;
-
     private String password;
+    private List<Qualification> qualificationList;
+    private List<Payroll> payrollEntities;
+    private List<Leave> leaves;
 
-    @OneToMany(mappedBy = "qualification")
-    private List<QualificationEntity> qualificationList=new ArrayList<>();
     // Getters and Setters
-
-    @OneToMany(mappedBy = "payroll")
-    private List<PayrollEntity> payrollEntities=new ArrayList<>();
-    @OneToMany(mappedBy = "leave")
-    private List<LeaveEntity> leaves=new ArrayList<>();
-
-    public List<QualificationEntity> getQualificationList() {
-        return qualificationList;
-    }
-
-    public void setQualificationList(List<QualificationEntity> qualificationList) {
-        this.qualificationList = qualificationList;
-    }
-
-    public List<PayrollEntity> getPayrolls() {
-        return payrollEntities;
-    }
-
-    public void setPayrolls(List<PayrollEntity> payrollEntities) {
-        this.payrollEntities = payrollEntities;
-    }
-
-    public List<LeaveEntity> getLeaves() {
-        return leaves;
-    }
-
-    public void setLeaves(List<LeaveEntity> leaves) {
-        this.leaves = leaves;
-    }
+    // Existing getters and setters
 
     public int getEmpID() {
         return empID;
@@ -120,5 +81,29 @@ public class EmployeeEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Qualification> getQualificationList() {
+        return qualificationList;
+    }
+
+    public void setQualificationList(List<Qualification> qualificationList) {
+        this.qualificationList = qualificationList;
+    }
+
+    public List<Payroll> getPayrollEntities() {
+        return payrollEntities;
+    }
+
+    public void setPayrollEntities(List<Payroll> payrollEntities) {
+        this.payrollEntities = payrollEntities;
+    }
+
+    public List<Leave> getLeaves() {
+        return leaves;
+    }
+
+    public void setLeaves(List<Leave> leaves) {
+        this.leaves = leaves;
     }
 }
