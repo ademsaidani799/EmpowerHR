@@ -146,7 +146,7 @@ return  employeeRepository.save(convertEmployeeDtoToEmployeeEntity(employee));
     public LeaveEntity createLeave(Leave leave) {
         LeaveEntity leaveEntity = convertLeaveDtoToLeaveEntity(leave);
 
-        EmployeeEntity employeeEntity = employeeRepository.findById(leave.getEmpID())
+        EmployeeEntity employeeEntity = employeeRepository.findById(leave.getEmployee().getEmpID())
                 .orElseThrow(() -> new RuntimeException("Employee not found"));
         leaveEntity.setEmployeeEntity(employeeEntity);
 
@@ -173,7 +173,7 @@ return  employeeRepository.save(convertEmployeeDtoToEmployeeEntity(employee));
         leaveEntity.setDate(leave.getDate());
         leaveEntity.setReason(leave.getReason());
 
-        EmployeeEntity employeeEntity = employeeRepository.findById(leave.getEmpID())
+        EmployeeEntity employeeEntity = employeeRepository.findById(leave.getEmployee().getEmpID())
                 .orElseThrow(() -> new RuntimeException("Employee not found"));
         leaveEntity.setEmployeeEntity(employeeEntity);
 
@@ -190,14 +190,14 @@ return  employeeRepository.save(convertEmployeeDtoToEmployeeEntity(employee));
 
     public PayrollEntity createPayrollEntity(Payroll payroll){
             PayrollEntity payrollEntity =convertPayrollDtoToPayroollEntity(payroll);
-        JobDepartmentEntity jobDepartmentEntity = jobDepartmentRepository.findById(payroll.getJobID())
+        JobDepartmentEntity jobDepartmentEntity = jobDepartmentRepository.findById(payroll.getJobDepartment().getJobID())
                 .orElseThrow(() -> new RuntimeException("Job Department not found"));
         payrollEntity.setJobDepartment(jobDepartmentEntity);
 
         jobDepartmentEntity.getPayrollEntityList().add(payrollEntity);
         jobDepartmentRepository.save(jobDepartmentEntity);
 
-        SalaryEntity salaryEntity = salaryRepository.findById(payroll.getSalaryID())
+        SalaryEntity salaryEntity = salaryRepository.findById(payroll.getSalaryEntity().getSalaryID())
                 .orElseThrow(() -> new RuntimeException("Job Department not found"));
         payrollEntity.setSalaryEntity(salaryEntity);
 
@@ -205,14 +205,14 @@ return  employeeRepository.save(convertEmployeeDtoToEmployeeEntity(employee));
         salaryRepository.save(salaryEntity);
 
 
-        EmployeeEntity employeeEntity = employeeRepository.findById(payroll.getEmpID())
+        EmployeeEntity employeeEntity = employeeRepository.findById(payroll.getEmployeeEntity().getEmpID())
                 .orElseThrow(() -> new RuntimeException("Job Department not found"));
         payrollEntity.setEmployeeEntity(employeeEntity);
 
         employeeEntity.getPayrollEntities().add(payrollEntity);
         employeeRepository.save(employeeEntity);
 
-        LeaveEntity leaveEntity = leaveRepository.findById(payroll.getLeaveID())
+        LeaveEntity leaveEntity = leaveRepository.findById(payroll.getLeave().getLeaveId())
                 .orElseThrow(() -> new RuntimeException("Job Department not found"));
         payrollEntity.setLeave(leaveEntity);
 
@@ -243,14 +243,14 @@ return  employeeRepository.save(convertEmployeeDtoToEmployeeEntity(employee));
         payrollEntity.setReport(payroll.getReport());
         payrollEntity.setTotalAmount(payroll.getTotalAmount());
 
-        JobDepartmentEntity jobDepartmentEntity = jobDepartmentRepository.findById(payroll.getJobID())
+        JobDepartmentEntity jobDepartmentEntity = jobDepartmentRepository.findById(payroll.getJobDepartment().getJobID())
                 .orElseThrow(() -> new RuntimeException("Job Department not found"));
         payrollEntity.setJobDepartment(jobDepartmentEntity);
 
         jobDepartmentEntity.getPayrollEntityList().add(payrollEntity);
         jobDepartmentRepository.save(jobDepartmentEntity);
 
-        SalaryEntity salaryEntity = salaryRepository.findById(payroll.getSalaryID())
+        SalaryEntity salaryEntity = salaryRepository.findById(payroll.getSalaryEntity().getSalaryID())
                 .orElseThrow(() -> new RuntimeException("Job Department not found"));
         payrollEntity.setSalaryEntity(salaryEntity);
 
@@ -258,14 +258,14 @@ return  employeeRepository.save(convertEmployeeDtoToEmployeeEntity(employee));
         salaryRepository.save(salaryEntity);
 
 
-        EmployeeEntity employeeEntity = employeeRepository.findById(payroll.getEmpID())
+        EmployeeEntity employeeEntity = employeeRepository.findById(payroll.getEmployeeEntity().getEmpID())
                 .orElseThrow(() -> new RuntimeException("Job Department not found"));
         payrollEntity.setEmployeeEntity(employeeEntity);
 
         employeeEntity.getPayrollEntities().add(payrollEntity);
         employeeRepository.save(employeeEntity);
 
-        LeaveEntity leaveEntity = leaveRepository.findById(payroll.getLeaveID())
+        LeaveEntity leaveEntity = leaveRepository.findById(payroll.getLeave().getLeaveId())
                 .orElseThrow(() -> new RuntimeException("Job Department not found"));
         payrollEntity.setLeave(leaveEntity);
 
@@ -295,7 +295,7 @@ return  employeeRepository.save(convertEmployeeDtoToEmployeeEntity(employee));
         qualificationEntity.setRequirements(qualification.getRequirements());
         qualificationEntity.setDateIn(qualification.getDateIn());
 
-        EmployeeEntity employeeEntity = employeeRepository.findById((int) qualification.getEmpID())
+        EmployeeEntity employeeEntity = employeeRepository.findById((int) qualification.getEmployee().getEmpID())
                 .orElseThrow(() -> new RuntimeException("Employee not found"));
         qualificationEntity.setEmployeeEntity(employeeEntity);
  employeeEntity.getQualificationList().add(qualificationEntity);
@@ -315,7 +315,7 @@ return  employeeRepository.save(convertEmployeeDtoToEmployeeEntity(employee));
         qualificationEntity.setRequirements(qualification.getRequirements());
         qualificationEntity.setDateIn(qualification.getDateIn());
 
-        EmployeeEntity employeeEntity = employeeRepository.findById((int) qualification.getEmpID())
+        EmployeeEntity employeeEntity = employeeRepository.findById((int) qualification.getEmployee().getEmpID())
                 .orElseThrow(() -> new RuntimeException("Employee not found"));
         qualificationEntity.setEmployeeEntity(employeeEntity);
         employeeEntity.getQualificationList().add(qualificationEntity);
@@ -370,7 +370,7 @@ return  employeeRepository.save(convertEmployeeDtoToEmployeeEntity(employee));
     public SalaryEntity createSalary(Salary salary) {
         SalaryEntity salaryEntity = convertSalaryDtoToSalaryEntity(salary);
 
-        JobDepartmentEntity jobDepartmentEntity = jobDepartmentRepository.findById(salary.getJobID())
+        JobDepartmentEntity jobDepartmentEntity = jobDepartmentRepository.findById(salary.getJobDepartment().getJobID())
                 .orElseThrow(() -> new RuntimeException("Job Department not found"));
         salaryEntity.setJobDepartment(jobDepartmentEntity);
 
@@ -399,7 +399,7 @@ return  employeeRepository.save(convertEmployeeDtoToEmployeeEntity(employee));
         salaryEntity.setAnnual(salary.getAnnual());
         salaryEntity.setBonus(salary.getBonus());
 
-        JobDepartmentEntity jobDepartmentEntity = jobDepartmentRepository.findById(salary.getJobID())
+        JobDepartmentEntity jobDepartmentEntity = jobDepartmentRepository.findById(salary.getJobDepartment().getJobID())
                 .orElseThrow(() -> new RuntimeException("Job Department not found"));
         salaryEntity.setJobDepartment(jobDepartmentEntity);
 

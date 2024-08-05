@@ -8,7 +8,7 @@ import lombok.Setter;
 public class Qualification {
 
     private int qualID;
-    private int empID;
+    private Employee employee;
     private String position;
     private String requirements;
     private Date dateIn;

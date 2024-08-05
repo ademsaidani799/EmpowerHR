@@ -10,8 +10,8 @@ public class Leave {
     private int leaveId;
     private Date date;
     private String reason;
-    private int empID;
-    private List<Payroll> payrollEntityList;
+    private Employee employee;
+    private List<Payroll> payrollList;
 
 
 }

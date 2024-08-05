@@ -10,7 +10,7 @@ import lombok.Setter;
 public class Salary {
 
     private int salaryID;
-    private int jobID;
+    private JobDepartment jobDepartment;
     private int amount;
     private double annual;
     private double bonus;
