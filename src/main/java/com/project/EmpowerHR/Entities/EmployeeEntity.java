@@ -30,7 +30,6 @@ public class EmployeeEntity {
 
     @OneToMany(mappedBy = "qualification")
     private List<QualificationEntity> qualificationList=new ArrayList<>();
-    // Getters and Setters
 
     @OneToMany(mappedBy = "payroll")
     private List<PayrollEntity> payrollEntities=new ArrayList<>();

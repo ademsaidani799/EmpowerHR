@@ -11,8 +11,8 @@ public class JobDepartment {
     private String name;
     private String description;
     private String salaryRange;
-    private List<Salary> salaryList;
-    private List<Payroll> payrollList;
+    private List<Salary> salaryEntityList;
+    private List<Payroll> payrollEntityList;
 
 
 }

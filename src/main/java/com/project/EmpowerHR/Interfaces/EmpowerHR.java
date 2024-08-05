@@ -8,8 +8,8 @@ import java.util.List;
 public interface EmpowerHR {
     // Employee CRUD methods
     EmployeeEntity createEmployee(Employee employee);
-    EmployeeEntity getEmployeeById(Long id);
-    List<EmployeeEntity> getAllEmployees();
+    Employee getEmployeeById(Long id);
+    List<Employee> getAllEmployees();
     EmployeeEntity updateEmployee(Employee employee);
     void deleteEmployee(Long id);
 
@@ -41,9 +41,9 @@ public interface EmpowerHR {
 
     // User CRUD methods
     UserEntity createUser(User user);
-    UserEntity getUserById(Long id);
-    List<UserEntity> getAllUsers();
-    UserEntity updateUser(User user);
+    User getUserById(Long id);
+    List<User> getAllUsers();
+    User updateUser(User user);
     void deleteUser(Long id);
 
     // Salary CRUD methods

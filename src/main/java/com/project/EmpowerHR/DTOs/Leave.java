@@ -11,7 +11,7 @@ public class Leave {
     private Date date;
     private String reason;
     private int empID;
-    private List<Payroll> payrollList;
+    private List<Payroll> payrollEntityList;
 
 
 }

@@ -13,8 +13,6 @@ public class QualificationEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int qualID;
 
-    private int empID;
-
     private String position;
 
     private String requirements;

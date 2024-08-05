@@ -25,13 +25,6 @@ public class PayrollEntity {
     @JoinColumn(name="jobID")
     private JobDepartmentEntity jobDepartment;
 
-    public JobDepartmentEntity getJobDepartment() {
-        return jobDepartment;
-    }
-
-    public void setJobDepartment(JobDepartmentEntity jobDepartment) {
-        this.jobDepartment = jobDepartment;
-    }
 
     @ManyToOne
     @JoinColumn(name="empID")

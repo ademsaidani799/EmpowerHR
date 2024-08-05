@@ -16,7 +16,7 @@ public class SalaryEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int salaryID;
 
-    private int jobID;
+
 
     private int amount;
 
