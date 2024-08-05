@@ -5,7 +5,10 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+import lombok.Getter;
+import lombok.Setter;
+@Getter
+@Setter
 @Entity
 public class LeaveEntity {
     @Id
@@ -23,45 +26,5 @@ public class LeaveEntity {
     @OneToMany(mappedBy = "leave", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PayrollEntity> payrollEntityList=new ArrayList<>();
 
-    // Getters and Setters
 
-    public int getLeaveId() {
-        return leaveId;
-    }
-
-    public void setLeaveId(int leaveId) {
-        this.leaveId = leaveId;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public String getReason() {
-        return reason;
-    }
-
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
-
-    public EmployeeEntity getEmployee() {
-        return employeeEntity;
-    }
-
-    public void setEmployee(EmployeeEntity employeeEntity) {
-        this.employeeEntity = employeeEntity;
-    }
-
-    public List<PayrollEntity> getPayrollEntityList() {
-        return payrollEntityList;
-    }
-
-    public void setPayrollEntityList(List<PayrollEntity> payrollEntityList) {
-        this.payrollEntityList = payrollEntityList;
-    }
 }

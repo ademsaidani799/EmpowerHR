@@ -1,7 +1,10 @@
 package com.project.EmpowerHR.DTOs;
 
 import java.util.Date;
-
+import lombok.Getter;
+import lombok.Setter;
+@Getter
+@Setter
 public class Payroll {
 
     private int payrollID;
@@ -13,69 +16,5 @@ public class Payroll {
     private String report;
     private double totalAmount;
 
-    // Getters and Setters
 
-    public int getPayrollID() {
-        return payrollID;
-    }
-
-    public void setPayrollID(int payrollID) {
-        this.payrollID = payrollID;
-    }
-
-    public int getEmpID() {
-        return empID;
-    }
-
-    public void setEmpID(int empID) {
-        this.empID = empID;
-    }
-
-    public int getJobID() {
-        return jobID;
-    }
-
-    public void setJobID(int jobID) {
-        this.jobID = jobID;
-    }
-
-    public int getSalaryID() {
-        return salaryID;
-    }
-
-    public void setSalaryID(int salaryID) {
-        this.salaryID = salaryID;
-    }
-
-    public int getLeaveID() {
-        return leaveID;
-    }
-
-    public void setLeaveID(int leaveID) {
-        this.leaveID = leaveID;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public String getReport() {
-        return report;
-    }
-
-    public void setReport(String report) {
-        this.report = report;
-    }
-
-    public double getTotalAmount() {
-        return totalAmount;
-    }
-
-    public void setTotalAmount(double totalAmount) {
-        this.totalAmount = totalAmount;
-    }
 }

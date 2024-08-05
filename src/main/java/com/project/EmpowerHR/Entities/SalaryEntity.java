@@ -5,7 +5,10 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import lombok.Getter;
+import lombok.Setter;
+@Getter
+@Setter
 @Entity
 public class SalaryEntity {
 
@@ -25,64 +28,7 @@ public class SalaryEntity {
     @JoinColumn(name="jobID")
     private JobDepartmentEntity jobDepartment;
 
-
-
     @OneToMany(mappedBy = "payroll")
     private List<PayrollEntity> payrollEntityList=new ArrayList<>();
-// Getters and Setters
 
-    public List<PayrollEntity> getPayrollList() {
-        return payrollEntityList;
-    }
-
-    public void setPayrollList(List<PayrollEntity> payrollEntityList) {
-        this.payrollEntityList = payrollEntityList;
-    }
-
-    public int getSalaryID() {
-        return salaryID;
-    }
-
-    public void setSalaryID(int salaryID) {
-        this.salaryID = salaryID;
-    }
-
-    public int getJobID() {
-        return jobID;
-    }
-
-    public void setJobID(int jobID) {
-        this.jobID = jobID;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
-    public double getAnnual() {
-        return annual;
-    }
-
-    public void setAnnual(double annual) {
-        this.annual = annual;
-    }
-
-    public double getBonus() {
-        return bonus;
-    }
-
-    public void setBonus(double bonus) {
-        this.bonus = bonus;
-    }
-    public JobDepartmentEntity getJobDepartment() {
-        return jobDepartment;
-    }
-
-    public void setJobDepartment(JobDepartmentEntity jobDepartment) {
-        this.jobDepartment = jobDepartment;
-    }
 }
