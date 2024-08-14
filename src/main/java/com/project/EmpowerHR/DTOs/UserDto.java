@@ -3,7 +3,7 @@ import lombok.Getter;
 import lombok.Setter;
 @Getter
 @Setter
-public class User {
+public class UserDto  {
 
     private int adminID;
     private String fname;

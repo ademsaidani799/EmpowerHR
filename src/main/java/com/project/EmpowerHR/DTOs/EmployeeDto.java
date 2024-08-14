@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 @Getter
 @Setter
-public class Employee {
+public class EmployeeDto {
 
     private int empID;
     private String firstName;
@@ -17,7 +17,7 @@ public class Employee {
     private int contactAddress;
     private String email;
     private String password;
-    private List<Qualification> qualificationList;
-    private List<Payroll> payrollEntities;
-    private List<Leave> leaves;
+    private List<QualificationDto>  qualificationDtos;
+    private List<PayrollDto > payrollDtos;
+    private List<LeaveDto > leaveDtos;
 }

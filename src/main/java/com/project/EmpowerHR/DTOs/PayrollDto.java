@@ -14,7 +14,7 @@ import lombok.Getter;
 import lombok.Setter;
 @Getter
 @Setter
-public class Payroll {
+public class PayrollDto {
 
     private int payrollID;
 
@@ -26,13 +26,13 @@ public class Payroll {
     private double totalAmount;
 
 
-    private JobDepartmentEntity jobDepartment;
+    private JobDepartmentDto jobDepartmentDto;
 
 
-    private EmployeeEntity employeeEntity;
+    private EmployeeDto  employeeDto ;
 
-    private SalaryEntity salaryEntity;
+    private SalaryDto salaryDto ;
 
-    private LeaveEntity leave;
+    private LeaveDto  leaveDto;
 
 }

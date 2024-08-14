@@ -7,49 +7,49 @@ import java.util.List;
 
 public interface EmpowerHR {
     // Employee CRUD methods
-    EmployeeEntity createEmployee(Employee employee);
-    Employee getEmployeeById(Long id);
-    List<Employee> getAllEmployees();
-    EmployeeEntity updateEmployee(Employee employee);
-    void deleteEmployee(Long id);
+    void createEmployee(EmployeeDto  employee);
+    EmployeeEntity  getEmployeeById(Long id);
+    List<EmployeeEntity > getAllEmployees();
+    public EmployeeEntity  updateEmployee(EmployeeDto  employee, long id);     void deleteEmployee(Long id);
 
     // JobDepartment CRUD methods
-    JobDepartmentEntity createJobDepartment(JobDepartment jobDepartment);
-    JobDepartmentEntity getJobDepartmentById(Long id);
-    List<JobDepartmentEntity> getAllJobDepartments();
-    JobDepartmentEntity updateJobDepartment(JobDepartment jobDepartment);
+    JobDepartmentEntity createJobDepartment(JobDepartmentDto  jobDepartment);
+    JobDepartmentEntity  getJobDepartmentById(Long id);
+    List<JobDepartmentEntity > getAllJobDepartments();
+    public JobDepartmentEntity  updateJobDepartment(JobDepartmentDto  jobDepartment,Long id);
+
     void deleteJobDepartment(Long id);
 
     // Leave CRUD methods
-    LeaveEntity createLeave(Leave leave);
+    LeaveEntity createLeave(LeaveDto  leave);
     LeaveEntity getLeaveById(Long id);
     List<LeaveEntity> getAllLeaves();
-    LeaveEntity updateLeave(Leave leave);
+    LeaveEntity updateLeave(LeaveDto  leave,long id);
     void deleteLeave(Long id);
 
     // Payroll CRUD methods
     PayrollEntity getPayrollById(Long id);
     List<PayrollEntity> getAllPayrolls();
-    PayrollEntity updatePayroll(Payroll payroll);
+    PayrollEntity updatePayroll(PayrollDto  payroll,long id);
     void deletePayroll(Long id);
 
     // Qualification CRUD methods
     QualificationEntity getQualificationById(Long id);
     List<QualificationEntity> getAllQualifications();
-    QualificationEntity updateQualification(Qualification qualification);
+    QualificationEntity updateQualification(QualificationDto  qualification,long id);
     void deleteQualification(Long id);
 
     // User CRUD methods
-    UserEntity createUser(User user);
-    User getUserById(Long id);
-    List<User> getAllUsers();
-    User updateUser(User user);
+    UserEntity createUser(UserDto  user);
+    UserEntity getUserById(Long id);
+    List<UserEntity> getAllUsers();
+    UserEntity updateUser(UserDto  user,long id);
     void deleteUser(Long id);
 
     // Salary CRUD methods
-    SalaryEntity createSalary(Salary salary);
+    SalaryEntity createSalary(SalaryDto  salary);
     SalaryEntity getSalaryById(Long id);
     List<SalaryEntity> getAllSalaries();
-    SalaryEntity updateSalary(Salary salary);
+    SalaryEntity updateSalary(SalaryDto  salary,long id);
     void deleteSalary(Long id);
 }

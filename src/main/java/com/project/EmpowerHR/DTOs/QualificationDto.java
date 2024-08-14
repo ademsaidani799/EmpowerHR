@@ -5,10 +5,10 @@ import lombok.Getter;
 import lombok.Setter;
 @Getter
 @Setter
-public class Qualification {
+public class QualificationDto  {
 
     private int qualID;
-    private Employee employee;
+    private EmployeeDto employee;
     private String position;
     private String requirements;
     private Date dateIn;

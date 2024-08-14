@@ -5,14 +5,14 @@ import lombok.Getter;
 import lombok.Setter;
 @Getter
 @Setter
-public class JobDepartment {
+public class JobDepartmentDto {
     private int jobID;
     private String jobDept;
     private String name;
     private String description;
     private String salaryRange;
-    private List<Salary> salaryEntityList;
-    private List<Payroll> payrollEntityList;
+    private List<SalaryDto > salaryDtos;
+    private List<PayrollDto > payrollDtos;
 
 
 }

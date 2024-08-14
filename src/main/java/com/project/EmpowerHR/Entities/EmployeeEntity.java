@@ -28,12 +28,12 @@ public class EmployeeEntity {
 
     private String password;
 
-    @OneToMany(mappedBy = "qualification")
+    @OneToMany(mappedBy = "employeeEntity")
     private List<QualificationEntity> qualificationList=new ArrayList<>();
 
-    @OneToMany(mappedBy = "payroll")
+    @OneToMany(mappedBy = "employeeEntity")
     private List<PayrollEntity> payrollEntities=new ArrayList<>();
-    @OneToMany(mappedBy = "leave")
+    @OneToMany(mappedBy = "employeeEntity")
     private List<LeaveEntity> leaves=new ArrayList<>();
 
 }

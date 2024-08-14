@@ -7,13 +7,13 @@ import lombok.Getter;
 import lombok.Setter;
 @Getter
 @Setter
-public class Salary {
+public class SalaryDto  {
 
     private int salaryID;
-    private JobDepartment jobDepartment;
+    private JobDepartmentDto jobDepartmentDto;
     private int amount;
     private double annual;
     private double bonus;
-    private List<Payroll> payrollEntityList;
+    private List<PayrollDto>  payrollDtos;
 
 }

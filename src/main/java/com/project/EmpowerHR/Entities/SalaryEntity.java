@@ -28,7 +28,7 @@ public class SalaryEntity {
     @JoinColumn(name="jobID")
     private JobDepartmentEntity jobDepartment;
 
-    @OneToMany(mappedBy = "payroll")
+    @OneToMany(mappedBy = "salaryEntity")
     private List<PayrollEntity> payrollEntityList=new ArrayList<>();
 
 }
