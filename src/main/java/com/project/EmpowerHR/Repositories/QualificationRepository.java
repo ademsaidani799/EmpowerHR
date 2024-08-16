@@ -4,4 +4,4 @@ import com.project.EmpowerHR.Entities.QualificationEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface QualificationRepository extends JpaRepository
-        <QualificationEntity, Integer> {}
+        <QualificationEntity, Long> {}

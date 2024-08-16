@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 public class EmployeeDto {
 
-    private int empID;
+    private Long empID;
     private String firstName;
     private String lastName;
     private int gender;

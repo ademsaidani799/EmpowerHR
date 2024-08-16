@@ -7,11 +7,11 @@ import lombok.Setter;
 @Setter
 public class QualificationDto  {
 
-    private int qualID;
+    private Long qualID;
     private EmployeeDto employee;
     private String position;
     private String requirements;
     private Date dateIn;
-
+private EmployeeDto employeeDto;
 
 }

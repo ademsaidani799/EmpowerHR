@@ -12,7 +12,7 @@ public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int adminID;
+    private Long adminID;
 
     private String fname;
 

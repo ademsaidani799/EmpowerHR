@@ -14,7 +14,7 @@ public class SalaryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int salaryID;
+    private Long salaryID;
 
 
 

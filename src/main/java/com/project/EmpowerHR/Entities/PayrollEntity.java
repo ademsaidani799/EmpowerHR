@@ -11,7 +11,7 @@ public class PayrollEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int payrollID;
+    private Long payrollID;
 
 
     @Temporal(TemporalType.DATE)

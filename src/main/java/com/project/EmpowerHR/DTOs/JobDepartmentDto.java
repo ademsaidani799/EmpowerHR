@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class JobDepartmentDto {
-    private int jobID;
+    private Long jobID;
     private String jobDept;
     private String name;
     private String description;

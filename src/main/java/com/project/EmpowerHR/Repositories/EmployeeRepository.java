@@ -4,5 +4,6 @@ import com.project.EmpowerHR.Entities.EmployeeEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface EmployeeRepository extends JpaRepository
-        <EmployeeEntity, Integer> {
+        <EmployeeEntity, Long> {
+    boolean existsByEmail(String email);
 }

@@ -16,7 +16,7 @@ import lombok.Setter;
 @Setter
 public class PayrollDto {
 
-    private int payrollID;
+    private Long payrollID;
 
 
     private Date date;

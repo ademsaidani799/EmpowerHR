@@ -7,49 +7,49 @@ import java.util.List;
 
 public interface EmpowerHR {
     // Employee CRUD methods
-    void createEmployee(EmployeeDto  employee);
-    EmployeeEntity  getEmployeeById(Long id);
-    List<EmployeeEntity > getAllEmployees();
-    public EmployeeEntity  updateEmployee(EmployeeDto  employee, long id);     void deleteEmployee(Long id);
+    EmployeeEntity createEmployee(EmployeeDto employee) throws Exception;
+    EmployeeEntity getEmployeeById(Long id) throws Exception;
+    List<EmployeeEntity> getAllEmployees();
+    EmployeeEntity updateEmployee(Long id, EmployeeDto employee) throws Exception;
+    void deleteEmployee(Long id) throws Exception;
 
     // JobDepartment CRUD methods
-    JobDepartmentEntity createJobDepartment(JobDepartmentDto  jobDepartment);
-    JobDepartmentEntity  getJobDepartmentById(Long id);
-    List<JobDepartmentEntity > getAllJobDepartments();
-    public JobDepartmentEntity  updateJobDepartment(JobDepartmentDto  jobDepartment,Long id);
-
-    void deleteJobDepartment(Long id);
+    JobDepartmentEntity createJobDepartment(JobDepartmentDto jobDepartment) throws Exception;
+    JobDepartmentEntity getJobDepartmentById(Long id) throws Exception;
+    List<JobDepartmentEntity> getAllJobDepartments();
+    JobDepartmentEntity updateJobDepartment(Long id, JobDepartmentDto jobDepartment) throws Exception;
+    void deleteJobDepartment(Long id) throws Exception;
 
     // Leave CRUD methods
-    LeaveEntity createLeave(LeaveDto  leave);
-    LeaveEntity getLeaveById(Long id);
+    LeaveEntity createLeave(LeaveDto leave) throws Exception;
+    LeaveEntity getLeaveById(Long id) throws Exception;
     List<LeaveEntity> getAllLeaves();
-    LeaveEntity updateLeave(LeaveDto  leave,long id);
-    void deleteLeave(Long id);
+    LeaveEntity updateLeave(Long id, LeaveDto leave) throws Exception;
+    void deleteLeave(Long id) throws Exception;
 
     // Payroll CRUD methods
-    PayrollEntity getPayrollById(Long id);
+    PayrollEntity getPayrollById(Long id) throws Exception;
     List<PayrollEntity> getAllPayrolls();
-    PayrollEntity updatePayroll(PayrollDto  payroll,long id);
-    void deletePayroll(Long id);
+    PayrollEntity updatePayroll(Long id, PayrollDto payroll) throws Exception;
+    void deletePayroll(Long id) throws Exception;
 
     // Qualification CRUD methods
-    QualificationEntity getQualificationById(Long id);
+    QualificationEntity getQualificationById(Long id) throws Exception;
     List<QualificationEntity> getAllQualifications();
-    QualificationEntity updateQualification(QualificationDto  qualification,long id);
-    void deleteQualification(Long id);
+    QualificationEntity updateQualification(Long id, QualificationDto qualification) throws Exception;
+    void deleteQualification(Long id) throws Exception;
 
     // User CRUD methods
-    UserEntity createUser(UserDto  user);
-    UserEntity getUserById(Long id);
+    UserEntity createUser(UserDto user) throws Exception;
+    UserEntity getUserById(Long id) throws Exception;
     List<UserEntity> getAllUsers();
-    UserEntity updateUser(UserDto  user,long id);
-    void deleteUser(Long id);
+    UserEntity updateUser(Long id, UserDto user) throws Exception;
+    void deleteUser(Long id) throws Exception;
 
     // Salary CRUD methods
-    SalaryEntity createSalary(SalaryDto  salary);
-    SalaryEntity getSalaryById(Long id);
+    SalaryEntity createSalary(SalaryDto salary) throws Exception;
+    SalaryEntity getSalaryById(Long id) throws Exception;
     List<SalaryEntity> getAllSalaries();
-    SalaryEntity updateSalary(SalaryDto  salary,long id);
-    void deleteSalary(Long id);
+    SalaryEntity updateSalary(Long id, SalaryDto salary) throws Exception;
+    void deleteSalary(Long id) throws Exception;
 }

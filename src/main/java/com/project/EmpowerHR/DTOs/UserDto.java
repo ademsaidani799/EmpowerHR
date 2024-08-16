@@ -5,7 +5,7 @@ import lombok.Setter;
 @Setter
 public class UserDto  {
 
-    private int adminID;
+    private Long adminID;
     private String fname;
     private String lname;
     private int gender;

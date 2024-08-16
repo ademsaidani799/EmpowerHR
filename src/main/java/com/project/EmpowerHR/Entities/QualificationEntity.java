@@ -11,7 +11,7 @@ public class QualificationEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int qualID;
+    private Long qualID;
 
     private String position;
 

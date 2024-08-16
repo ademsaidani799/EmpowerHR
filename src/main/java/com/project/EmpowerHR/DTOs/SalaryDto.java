@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 public class SalaryDto  {
 
-    private int salaryID;
+    private Long salaryID;
     private JobDepartmentDto jobDepartmentDto;
     private int amount;
     private double annual;

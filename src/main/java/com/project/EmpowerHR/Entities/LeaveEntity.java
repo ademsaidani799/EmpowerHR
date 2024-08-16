@@ -13,7 +13,7 @@ import lombok.Setter;
 public class LeaveEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int leaveId;
+    private Long leaveId;
 
     @Temporal(TemporalType.DATE)
     private Date date;

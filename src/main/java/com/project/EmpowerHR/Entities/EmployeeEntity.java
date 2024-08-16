@@ -12,7 +12,7 @@ public class EmployeeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int empID;
+    private Long empID;
 
     private String firstName;
 
