@@ -1,4 +1,5 @@
 package com.project.EmpowerHR.Entities;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -27,13 +28,11 @@ public class EmployeeEntity {
     private String email;
 
     private String password;
-
-    @OneToMany(mappedBy = "employeeEntity")
+    @OneToMany(mappedBy = "employee")
     private List<QualificationEntity> qualificationList=new ArrayList<>();
-
-    @OneToMany(mappedBy = "employeeEntity")
+    @OneToMany(mappedBy = "employee")
     private List<PayrollEntity> payrollEntities=new ArrayList<>();
-    @OneToMany(mappedBy = "employeeEntity")
+    @OneToMany(mappedBy = "employee")
     private List<LeaveEntity> leaves=new ArrayList<>();
 
 }

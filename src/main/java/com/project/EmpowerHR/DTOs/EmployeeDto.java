@@ -17,7 +17,8 @@ public class EmployeeDto {
     private int contactAddress;
     private String email;
     private String password;
-    private List<QualificationDto>  qualificationDtos;
-    private List<PayrollDto > payrollDtos;
-    private List<LeaveDto > leaveDtos;
+    private List<QualificationDto>  qualificationList;
+    private List<PayrollDto > payrollEntities;
+
+    private List<LeaveDto > leaves;
 }

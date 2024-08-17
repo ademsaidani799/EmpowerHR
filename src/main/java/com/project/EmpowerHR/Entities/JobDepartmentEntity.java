@@ -1,6 +1,7 @@
 package com.project.EmpowerHR.Entities;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -22,7 +23,6 @@ public class JobDepartmentEntity {
     private String name;
     private String description;
     private String salaryRange;
-
     @OneToMany(mappedBy = "jobDepartment", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SalaryEntity> salaryEntityList=new ArrayList<>();
     @OneToMany(mappedBy = "jobDepartment", cascade = CascadeType.ALL, orphanRemoval = true)

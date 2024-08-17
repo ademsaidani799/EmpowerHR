@@ -1,6 +1,8 @@
 package com.project.EmpowerHR.Entities;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -27,8 +29,7 @@ public class SalaryEntity {
     @ManyToOne
     @JoinColumn(name="jobID")
     private JobDepartmentEntity jobDepartment;
-
-    @OneToMany(mappedBy = "salaryEntity")
+    @OneToMany(mappedBy = "salary")
     private List<PayrollEntity> payrollEntityList=new ArrayList<>();
 
 }

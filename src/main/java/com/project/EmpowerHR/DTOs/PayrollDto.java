@@ -26,13 +26,13 @@ public class PayrollDto {
     private double totalAmount;
 
 
-    private JobDepartmentDto jobDepartmentDto;
+    private JobDepartmentDto jobDepartment;
 
 
-    private EmployeeDto  employeeDto ;
+    private EmployeeDto  employee ;
 
-    private SalaryDto salaryDto ;
+    private SalaryDto salary ;
 
-    private LeaveDto  leaveDto;
+    private LeaveDto  leave;
 
 }

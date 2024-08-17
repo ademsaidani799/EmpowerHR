@@ -10,10 +10,10 @@ import lombok.Setter;
 public class SalaryDto  {
 
     private Long salaryID;
-    private JobDepartmentDto jobDepartmentDto;
+    private JobDepartmentDto jobDepartment;
     private int amount;
     private double annual;
     private double bonus;
-    private List<PayrollDto>  payrollDtos;
+    private List<PayrollDto>  payrollEntityList;
 
 }

@@ -11,8 +11,8 @@ public class JobDepartmentDto {
     private String name;
     private String description;
     private String salaryRange;
-    private List<SalaryDto > salaryDtos;
-    private List<PayrollDto > payrollDtos;
+    private List<SalaryDto > salaryEntityList;
+    private List<PayrollDto > payrollEntityList;
 
 
 }

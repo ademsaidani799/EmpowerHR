@@ -1,4 +1,5 @@
 package com.project.EmpowerHR.Entities;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -28,11 +29,11 @@ public class PayrollEntity {
 
     @ManyToOne
     @JoinColumn(name="empID")
-    private EmployeeEntity employeeEntity;
+    private EmployeeEntity employee;
 
     @ManyToOne
     @JoinColumn(name="salaryID")
-    private SalaryEntity salaryEntity;
+    private SalaryEntity salary;
 
     @ManyToOne
     @JoinColumn(name="leaveId")
